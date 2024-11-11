@@ -12,10 +12,10 @@
   <header>
     <nav>
       <h1>Laravel Tutorial</h1>
-      <a href="/professionals">
+      <a href="{{route('professionals.index')}}">
         All Professionals
       </a>
-      <a href="/professionals/add">
+      <a href="{{route('professionals.create')}}">
         Add new Professional
       </a>
     </nav>
