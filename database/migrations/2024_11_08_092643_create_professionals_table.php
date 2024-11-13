@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('skill');
             $table->text('bio');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
     }
 

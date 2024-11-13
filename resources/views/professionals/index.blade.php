@@ -1,16 +1,18 @@
 <x-layout>
     <h2>Professional List</h2>
 
-    {{-- @if ($greetings == "hi")
-        <strong>Hi from inside the if statement</strong>
-    @endif --}}
     <ul>
         @foreach ($professionals as $professional)
         <li>
-            <x-card href="{{ route('professionals.show', $professional->id) }}" :highlight="$professional['skill'] == 'Animal Trainer'">
-                <h3>{{ $professional['name'] }}</h3>
+            <x-card href="{{ route('professionals.show', $professional->id) }}" :highlight="Str::contains($professional->skill, 'Development')">
+                <div>
+                    <h3>{{ $professional->name }}</h3>
+                    <p><strong>Sector:</strong> {{$professional->category->name}}</p>
+                </div>
             </x-card>
         </li>
         @endforeach
     </ul>
+
+    {{ $professionals->links() }}
 </x-layout>

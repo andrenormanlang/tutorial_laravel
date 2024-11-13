@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Professional extends Model
 {
     protected $fillable = ['name', 'skill', 'bio'];
-    
+
     /** @use HasFactory<\Database\Factories\ProfessionalFactory> */
     use HasFactory;
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
 }
