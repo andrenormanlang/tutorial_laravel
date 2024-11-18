@@ -9,7 +9,6 @@ Route::get('/', function () {
 });
 
 Route::get('/professionals', [ProfessionalController::class, 'index'])->name('professionals.index');
-
 Route::get('/professionals/create', [ProfessionalController::class, 'create'] )->name('professionals.create');
-
 Route::get('/professionals/{id}', [ProfessionalController::class, 'show'] )->name('professionals.show');
+Route::post('/professionals', [ProfessionalController::class,'store'])->name('professionals.store');

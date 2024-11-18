@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Professional;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,10 +23,21 @@ class ProfessionalController extends Controller
     }
     public function create()
     {
-        return view('professionals.create');
+        $categories = Category::all();
+
+        return view('professionals.create', ["categories" => $categories]);
     }
     public function store(Request $request)
     {
-        return redirect('/professionals');
+        $validated = $request->validate ([
+            "name"=> "required|string|max:255",
+            "skill"=> "required|string|min:5|max:255",
+            "bio"=> "required|string|min:20|max:1000",
+            "category_id"=> "required|exists:categories,id"
+        ]);
+
+        Professional::create($validated);
+
+        return redirect()->route('professionals.index');
     }
 }
