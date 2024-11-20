@@ -38,6 +38,14 @@ class ProfessionalController extends Controller
 
         Professional::create($validated);
 
-        return redirect()->route('professionals.index');
+        return redirect()->route('professionals.index')->with('success', 'Professional created successfully');
+    }
+
+    public function destroy($id)
+    {
+        $professional = Professional::findOrFail($id);
+        $professional->delete();
+
+        return redirect()->route('professionals.index')->with('success', 'Professional deleted successfully');;
     }
 }

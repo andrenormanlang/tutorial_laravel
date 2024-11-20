@@ -12,3 +12,5 @@ Route::get('/professionals', [ProfessionalController::class, 'index'])->name('pr
 Route::get('/professionals/create', [ProfessionalController::class, 'create'] )->name('professionals.create');
 Route::get('/professionals/{id}', [ProfessionalController::class, 'show'] )->name('professionals.show');
 Route::post('/professionals', [ProfessionalController::class,'store'])->name('professionals.store');
+Route::delete('/professionals/{id}', [ProfessionalController::class, 'destroy'] )->name('professionals.destroy');
+
